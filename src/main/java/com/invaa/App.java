@@ -43,7 +43,6 @@ public class App {
         System.out.println("Signature is valid: " + jwsTest.verifySignature());
     }
 
-
     private static PublicKey getPublicKey(String string) throws InvalidKeyException {
         return new ECPublicKeyImpl(Base64.getDecoder().decode(string));
     }
@@ -61,6 +60,3 @@ public class App {
     }
 
 }
-
-
-
