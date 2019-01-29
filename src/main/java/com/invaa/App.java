@@ -11,7 +11,7 @@ import java.util.Base64;
 public class App {
 
     private static final int SIGNATURE_SIZE = 64;
-    private static final String SHA_256_WITH_ECDSA = "SHA256withECDSA";
+    private static final String SIGNING_ALGORITHM = "SHA256withECDSA";
     private static final String KEY_PUBLIC_BASE64 = "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEAagkAcOJW3jRhGW53iEqxEcfakh/X/"
                 + "g9U334fM4xmSo/JMSHMBM80cnWpGF7DHRccgz0EqHIvaI+HDo93r2dwg==";
 
@@ -53,7 +53,7 @@ public class App {
 
     private static byte[] sign(PrivateKey privateKey, byte[] data)
             throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
-        Signature signature = Signature.getInstance(SHA_256_WITH_ECDSA);
+        Signature signature = Signature.getInstance(SIGNING_ALGORITHM);
         signature.initSign(privateKey);
         signature.update(data);
         return signature.sign();
