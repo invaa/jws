@@ -10,15 +10,15 @@ import java.util.Base64;
 
 public class App {
 
-private static final int SIGNATURE_SIZE = 64;
-private static final String SHA_256_WITH_ECDSA = "SHA256withECDSA";
-private static final String KEY_PUBLIC_BASE64 = "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEAagkAcOJW3jRhGW53iEqxEcfakh/X/"
-        + "g9U334fM4xmSo/JMSHMBM80cnWpGF7DHRccgz0EqHIvaI+HDo93r2dwg==";
+    private static final int SIGNATURE_SIZE = 64;
+    private static final String SHA_256_WITH_ECDSA = "SHA256withECDSA";
+    private static final String KEY_PUBLIC_BASE64 = "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEAagkAcOJW3jRhGW53iEqxEcfakh/X/"
+                + "g9U334fM4xmSo/JMSHMBM80cnWpGF7DHRccgz0EqHIvaI+HDo93r2dwg==";
 
-private static final String KEY_PRIVATE_BASE64 = "MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCAEgpvK0j5YJFnYhL/" +
-        "dmE2B4ZX75N0wsHCz7b78cdDARRkkGcnhphxwiMV95ADwO15sJKum26WFRJP4pAxotmlRLjjAELV+a/qVm4rSzQOHUlaJCW0m3ZRYDbgN4pU80PW";
+    private static final String KEY_PRIVATE_BASE64 = "MEECAQAwEwYHKoZIzj0CAQYIKoZIzj0DAQcEJzAlAgEBBCAEgpvK0j5YJFnYhL/" +
+                "dmE2B4ZX75N0wsHCz7b78cdDARRkkGcnhphxwiMV95ADwO15sJKum26WFRJP4pAxotmlRLjjAELV+a/qVm4rSzQOHUlaJCW0m3ZRYDbgN4pU80PW";
 
-private static final String JWT_PAYLOAD = "helloworld";
+    private static final String PAYLOAD = "helloworld";
 
     public static void main(String ... args) throws Exception {
         PublicKey publicKey = getPublicKey(KEY_PUBLIC_BASE64);
@@ -26,7 +26,7 @@ private static final String JWT_PAYLOAD = "helloworld";
 
         String jwsHeaderAndPayload =
                 Base64.getUrlEncoder().withoutPadding().encodeToString("{\"alg\":\"ES256\"}".getBytes()) + "."
-                        + Base64.getUrlEncoder().withoutPadding().encodeToString(JWT_PAYLOAD.getBytes());
+                        + Base64.getUrlEncoder().withoutPadding().encodeToString(PAYLOAD.getBytes());
 
         String jwsStr = jwsHeaderAndPayload + "." +
                 Base64.getUrlEncoder()
